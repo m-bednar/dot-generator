@@ -1,8 +1,9 @@
 import { GraphNode } from "./node";
-import { Color } from "./options";
+import { Color, Style } from "./options";
 
 export interface EdgeOptions {
     readonly color?: Color;
+    readonly style?: Style;
 }
 
 export interface Edge {

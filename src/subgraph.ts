@@ -2,19 +2,20 @@ import { Edge } from "./edge";
 import { BgColor } from "./options";
 
 export interface SubgraphOptions {
-    readonly bgcolor: BgColor;
+    readonly label?: string;
+    readonly bgcolor?: BgColor;
 }
 
 export interface Subgraph {
-    readonly edges: ReadonlyArray<Edge>;
+    readonly internals: ReadonlyArray<Edge | Subgraph>;
     readonly options?: SubgraphOptions;
     readonly isCluster: boolean;
 }
 
-export function subgraph(edges: ReadonlyArray<Edge>, options?: SubgraphOptions): Subgraph {
-    return { edges, options, isCluster: false };
+export function subgraph(internals: ReadonlyArray<Edge | Subgraph>, options?: SubgraphOptions): Subgraph {
+    return { internals, options, isCluster: false };
 }
 
-export function cluster(edges: ReadonlyArray<Edge>, options?: SubgraphOptions): Subgraph {
-    return { edges, options, isCluster: true };
+export function cluster(internals: ReadonlyArray<Edge | Subgraph>, options?: SubgraphOptions): Subgraph {
+    return { internals, options, isCluster: true };
 }

@@ -1,17 +1,18 @@
 import { Edge } from "./edge";
+import { Subgraph } from "./subgraph";
 
 export interface GraphOptions {}
 
 export interface Graph {
-    readonly edges: ReadonlyArray<Edge>;
+    readonly internals: ReadonlyArray<Edge | Subgraph>;
     readonly options?: GraphOptions;
     readonly isDirected: boolean;
 }
 
-export function graph(edges: ReadonlyArray<Edge>, options?: GraphOptions): Graph {
-    return { edges, options, isDirected: false };
+export function graph(internals: ReadonlyArray<Edge | Subgraph>, options?: GraphOptions): Graph {
+    return { internals, options, isDirected: false };
 }
 
-export function digraph(edges: ReadonlyArray<Edge>, options?: GraphOptions): Graph {
-    return { edges, options, isDirected: true };
+export function digraph(internals: ReadonlyArray<Edge | Subgraph>, options?: GraphOptions): Graph {
+    return { internals, options, isDirected: true };
 }
