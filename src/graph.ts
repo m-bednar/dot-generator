@@ -1,5 +1,7 @@
 import { Edge } from "./edge";
+import { generateStandaloneOptions } from "./options";
 import { Subgraph } from "./subgraph";
+import { generateInternals } from "./utils";
 
 export interface GraphOptions {}
 
@@ -15,4 +17,11 @@ export function graph(internals: ReadonlyArray<Edge | Subgraph>, options?: Graph
 
 export function digraph(internals: ReadonlyArray<Edge | Subgraph>, options?: GraphOptions): Graph {
     return { internals, options, isDirected: true };
+}
+
+export function generateGraph(graph: Graph): string {
+    const keyword = graph.isDirected ? 'digraph' : 'graph';
+    const options = graph.options ? generateStandaloneOptions(graph.options, 1) : '';
+    const internals = generateInternals(graph.internals, graph.isDirected, 1);
+    return `${keyword} {\n${options}${internals}\n}`;
 }
