@@ -19,7 +19,7 @@ export function digraph(internals: ReadonlyArray<Edge | Subgraph>, options?: Gra
     return { internals, options, isDirected: true };
 }
 
-export function generateGraph(graph: Graph): string {
+export function generate(graph: Graph): string {
     const keyword = graph.isDirected ? 'digraph' : 'graph';
     const options = graph.options ? generateStandaloneOptions(graph.options, 1) : '';
     const internals = generateInternals(graph.internals, graph.isDirected, 1);
