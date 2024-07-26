@@ -11,6 +11,16 @@
     "test": "npm run build && mocha ./build/test",
     "prepack": "npm run test && npm run build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m-bednar/dot-generator.git"
+  },
+  "keywords": [
+    "dot",
+    "graph",
+    "graphviz",
+    "generator"
+  ],
   "author": "Martin Bednar",
   "license": "ISC",
   "devDependencies": {
