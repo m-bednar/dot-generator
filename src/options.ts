@@ -13,7 +13,7 @@ function stringifyValue(value: any): string {
 }
 
 export function generateStandaloneOptions(options: object, indent: number) {
-    const entries = Object.entries(options).map(([name, value]) => `${makeIndent(indent)}${name}="${value}"`);
+    const entries = Object.entries(options).map(([name, value]) => `${makeIndent(indent)}${name}=${stringifyValue(value)}`);
     return `${entries.join(';\n')};\n`;
 }
 
