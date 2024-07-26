@@ -3,9 +3,18 @@ import { makeIndent } from "./utils";
 import { GraphNode } from "./node";
 import { Color, Style } from "./options";
 
+export type ArrowType = "normal" | "inv" | "dot" | "invdot" | "odot" |"invodot" | "none" | 
+    "tee" | "empty" |"invempty" | "diamond" |"odiamond" | "ediamond" | 
+    "crow" | "box" |"obox" | "open" |"halfopen" | "vee";
+
 export interface EdgeOptions {
+    readonly label?: string;
     readonly color?: Color;
     readonly style?: Style;
+    readonly dir?: "forward" | "back" | "both" | "none";
+    readonly arrowsize?: number;
+    readonly arrowhead?: ArrowType;
+    readonly arrowtail?: ArrowType;
 }
 
 export interface Edge {

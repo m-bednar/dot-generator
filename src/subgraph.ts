@@ -7,6 +7,7 @@ import { generateInternals } from "./utils";
 export interface SubgraphOptions {
     readonly label?: string;
     readonly bgcolor?: BgColor;
+    readonly cluster?: boolean;
 }
 
 export interface Subgraph {
