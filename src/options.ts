@@ -5,7 +5,7 @@ export type Color = string;
 export type BgColor = string;
 export type Style = string;
 
-function stringifyValue(value: any): string {
+function stringifyValue(value: unknown): string {
     if (typeof value === 'string') {
         return `"${value}"`;
     }
@@ -13,12 +13,20 @@ function stringifyValue(value: any): string {
 }
 
 export function generateStandaloneOptions(options: object, indent: number) {
-    const entries = Object.entries(options).map(([name, value]) => `${makeIndent(indent)}${name}=${stringifyValue(value)}`);
-    return `${entries.join(';\n')};\n`;
+    const entries = Object.entries(options);
+    if (entries.length === 0) {
+        return '';
+    }
+    const mapped = entries.map(([name, value]) => `${makeIndent(indent)}${name}=${stringifyValue(value)}`);
+    return `${mapped.join(';\n')};\n`;
 }
 
 export function generateArgumentOptions(options: object) {
-    const entries = Object.entries(options).map(([name, value]) => `${name}=${stringifyValue(value)}`);
-    return `[${entries.join(', ')}]`;
+    const entries = Object.entries(options);
+    if (entries.length === 0) {
+        return '';
+    }
+    const mapped = entries.map(([name, value]) => `${name}=${stringifyValue(value)}`);
+    return `[${mapped.join(', ')}]`;
 }
 
