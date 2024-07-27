@@ -10,6 +10,7 @@ export type ArrowType = "normal" | "inv" | "dot" | "invdot" | "odot" |"invodot" 
 export interface EdgeOptions {
     readonly label?: string;
     readonly color?: Color;
+    readonly fontcolor?: Color;
     readonly style?: Style;
     readonly dir?: "forward" | "back" | "both" | "none";
     readonly arrowsize?: number;

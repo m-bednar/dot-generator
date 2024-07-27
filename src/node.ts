@@ -6,7 +6,8 @@ export interface GraphNodeOptions {
     readonly label?: string;
     readonly shape?: Shape;
     readonly color?: Color;
-    readonly bgcolor?: BgColor;
+    readonly fontcolor?: Color;
+    readonly fillcolor?: BgColor;
 }
 
 export interface GraphNode {
