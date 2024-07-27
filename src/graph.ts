@@ -1,4 +1,5 @@
-import { Edge } from "./edge";
+import { Edge, generateEdge } from "./edge";
+import { GraphNode } from "./node";
 import { BgColor, generateStandaloneOptions, Style } from "./options";
 import { Subgraph } from "./subgraph";
 import { generateInternals } from "./utils";
@@ -10,22 +11,28 @@ export interface GraphOptions {
 }
 
 export interface Graph {
-    readonly internals: ReadonlyArray<Edge | Subgraph>;
+    readonly internals: ReadonlyArray<GraphNode | Subgraph>;
+    readonly edges: ReadonlyArray<Edge>;
     readonly options?: GraphOptions;
     readonly isDirected: boolean;
 }
 
-export function graph(internals: ReadonlyArray<Edge | Subgraph>, options?: GraphOptions): Graph {
-    return { internals, options, isDirected: false };
+export function generateEdges(edges: ReadonlyArray<Edge>, isDirected: boolean): string {
+    return edges.map(edge => generateEdge(edge, isDirected, 1)).join(';\n')
 }
 
-export function digraph(internals: ReadonlyArray<Edge | Subgraph>, options?: GraphOptions): Graph {
-    return { internals, options, isDirected: true };
+export function graph(internals: ReadonlyArray<GraphNode | Subgraph>, edges: ReadonlyArray<Edge>, options?: GraphOptions): Graph {
+    return { internals, edges, options, isDirected: false };
+}
+
+export function digraph(internals: ReadonlyArray<GraphNode | Subgraph>, edges: ReadonlyArray<Edge>, options?: GraphOptions): Graph {
+    return { internals, edges, options, isDirected: true };
 }
 
 export function generate(graph: Graph): string {
     const keyword = graph.isDirected ? 'digraph' : 'graph';
     const options = graph.options ? generateStandaloneOptions(graph.options, 1) : '';
     const internals = generateInternals(graph.internals, graph.isDirected, 1);
-    return `${keyword} {\n${options}${internals}\n}`;
+    const edges = generateEdges(graph.edges, graph.isDirected);
+    return `${keyword} {\n${options}${internals}\n${edges}\n}`;
 }

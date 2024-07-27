@@ -1,8 +1,8 @@
 import { Color, generateStandaloneOptions, Style } from "./options";
 import { makeIndent } from "./utils";
-import { Edge } from "./edge";
 import { BgColor } from "./options";
 import { generateInternals } from "./utils";
+import { GraphNode } from "./node";
 
 export interface SubgraphOptions {
     readonly label?: string;
@@ -15,16 +15,16 @@ export interface SubgraphOptions {
 }
 
 export interface Subgraph {
-    readonly internals: ReadonlyArray<Edge | Subgraph>;
+    readonly internals: ReadonlyArray<GraphNode | Subgraph>;
     readonly options?: SubgraphOptions;
     readonly isCluster: boolean;
 }
 
-export function subgraph(internals: ReadonlyArray<Edge | Subgraph>, options?: SubgraphOptions): Subgraph {
+export function subgraph(internals: ReadonlyArray<GraphNode | Subgraph>, options?: SubgraphOptions): Subgraph {
     return { internals, options, isCluster: false };
 }
 
-export function cluster(internals: ReadonlyArray<Edge | Subgraph>, options?: SubgraphOptions): Subgraph {
+export function cluster(internals: ReadonlyArray<GraphNode | Subgraph>, options?: SubgraphOptions): Subgraph {
     return { internals, options, isCluster: true };
 }
 
