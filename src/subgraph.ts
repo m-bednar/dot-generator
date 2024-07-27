@@ -8,6 +8,8 @@ export interface SubgraphOptions {
     readonly label?: string;
     readonly bgcolor?: BgColor;
     readonly fontcolor?: Color;
+    readonly fontname?: string;
+    readonly fontsize?: number;
     readonly cluster?: boolean;
 }
 

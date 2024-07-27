@@ -11,6 +11,8 @@ export interface EdgeOptions {
     readonly label?: string;
     readonly color?: Color;
     readonly fontcolor?: Color;
+    readonly fontname?: string;
+    readonly fontsize?: number;
     readonly style?: Style;
     readonly dir?: "forward" | "back" | "both" | "none";
     readonly arrowsize?: number;

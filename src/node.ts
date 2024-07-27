@@ -7,6 +7,8 @@ export interface GraphNodeOptions {
     readonly shape?: Shape;
     readonly color?: Color;
     readonly fontcolor?: Color;
+    readonly fontname?: string;
+    readonly fontsize?: number;
     readonly fillcolor?: BgColor;
 }
 
