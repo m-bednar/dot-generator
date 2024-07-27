@@ -1,10 +1,11 @@
 import { Edge } from "./edge";
-import { BgColor, generateStandaloneOptions } from "./options";
+import { BgColor, generateStandaloneOptions, Style } from "./options";
 import { Subgraph } from "./subgraph";
 import { generateInternals } from "./utils";
 
 export interface GraphOptions {
     readonly scale?: number;
+    readonly style?: Style;
     readonly bgcolor?: BgColor;
 }
 

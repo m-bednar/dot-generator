@@ -1,4 +1,4 @@
-import { Color, generateStandaloneOptions } from "./options";
+import { Color, generateStandaloneOptions, Style } from "./options";
 import { makeIndent } from "./utils";
 import { Edge } from "./edge";
 import { BgColor } from "./options";
@@ -6,6 +6,7 @@ import { generateInternals } from "./utils";
 
 export interface SubgraphOptions {
     readonly label?: string;
+    readonly style?: Style;
     readonly bgcolor?: BgColor;
     readonly fontcolor?: Color;
     readonly fontname?: string;

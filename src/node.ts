@@ -1,9 +1,10 @@
-import { generateArgumentOptions } from "./options";
+import { generateArgumentOptions, Style } from "./options";
 import { BgColor, Color, Shape } from "./options";
 import { makeIndent } from "./utils";
 
 export interface GraphNodeOptions {
     readonly label?: string;
+    readonly style?: Style;
     readonly shape?: Shape;
     readonly color?: Color;
     readonly fontcolor?: Color;
